@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: ub-accesible-theme-altair
+Version: 0.0.7
+Summary: Librería para leer ficheros PDFs y extraer la información en formato str
+Home-page: https://google.com
+Author: Miguel Huayllas
+Author-email: mhuaylch10@alumnes.ub.edu
+License: MIT
+Description-Content-Type: text/markdown
+
+# Introduction
+
+This library is a set of themes of the library vega-altair of python, with this
+library we add a new theme for altair that be installable with a simple pip install

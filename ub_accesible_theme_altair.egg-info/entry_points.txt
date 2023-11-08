@@ -1,0 +1,2 @@
+[altair.vegalite.v5.theme]
+accesible_theme = ub_accesible_theme_altair.theme:accesible_theme

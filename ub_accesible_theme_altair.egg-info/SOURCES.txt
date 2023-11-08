@@ -1,0 +1,12 @@
+README.md
+setup.py
+ub_accesible_theme_altair/__init__.py
+ub_accesible_theme_altair/theme.py
+ub_accesible_theme_altair/tokens.py
+ub_accesible_theme_altair/types.py
+ub_accesible_theme_altair.egg-info/PKG-INFO
+ub_accesible_theme_altair.egg-info/SOURCES.txt
+ub_accesible_theme_altair.egg-info/dependency_links.txt
+ub_accesible_theme_altair.egg-info/entry_points.txt
+ub_accesible_theme_altair.egg-info/requires.txt
+ub_accesible_theme_altair.egg-info/top_level.txt
