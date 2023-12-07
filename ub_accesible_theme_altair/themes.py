@@ -1,12 +1,63 @@
-
-
 """Altair theme configuration."""
 
-from .tokens import COLORS, FONT, FONT_SIZES, OPACITIES, SPACING, STROKE_WIDTHS
-from .types import Theme
+from tokens import COLORS, FONT, FONT_SIZES, OPACITIES, SPACING, STROKE_WIDTHS
+from types_theme import Theme, Legend, View, Colors
+from models import *
+import altair as alt
 
 
-def accesible_theme() :
+class tema_daltonimo_deuteranopia():
+    name_theme = 'black_theme'
+    colors: Colors = {'axis': COLORS['axis'], 'background': COLORS['background'], 'text': COLORS['text'],
+                      'mark': COLORS['mark'], 'grid': COLORS['grid']}
+    font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
+    spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
+
+    # Variables a cambiar independientes
+
+
+
+
+    def __init__(self):
+        self.background = "#825471"
+        self.config = config_model(background=self.background)
+
+    def get_theme(self) -> str:
+        return str(self.config.create_full_config())
+
+    def change_background_color(self):
+        COLORS['background'] = '#d05949'
+        alt.themes.register(self.name_theme, self.get_theme())
+
+    """def re_register(self):
+        pass
+
+    def accept_json(self):
+        pass
+
+    def __str__(self):
+        pass"""
+
+
+def my_theme():
+    return {
+        'config': {
+            'view': {
+                'height': 300,
+                'width': 400,
+            },
+            'mark': {
+                'color': 'black',
+                'fill': '#000000',
+            },
+            'axisLeft': {
+                'labelFontSize': 30,
+            },
+        }
+    }
+
+
+def accesible_theme() -> Theme:
     """Feedzai theme (light theme)."""
     return {
         "config": {
@@ -70,7 +121,6 @@ def accesible_theme() :
             },
             # Chart
             "background": COLORS["background"],
-            "group": {"fill": COLORS["background"]},
             "header": {
                 "labelColor": COLORS["text"],
                 "labelFont": FONT,
@@ -96,3 +146,7 @@ def accesible_theme() :
             },
         }
     }
+
+gg = tema_daltonimo_deuteranopia()
+def black_theme():
+    return gg.get_theme()

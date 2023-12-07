@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.7gi' #Muy importante, deberéis ir cambiando la versión de vuestra librería según incluyáis nuevas funcionalidades
+VERSION = '0.0.14' #Muy importante, deberéis ir cambiando la versión de vuestra librería según incluyáis nuevas funcionalidades
 PACKAGE_NAME = 'ub_accesible_theme_altair' #Debe coincidir con el nombre de la carpeta
 AUTHOR = 'Miguel Huayllas' #Modificar con vuestros datos
 AUTHOR_EMAIL = 'mhuaylch10@alumnes.ub.edu' #Modificar con vuestros datos
@@ -22,10 +22,12 @@ LONG_DESC_TYPE = "text/markdown"
 ENTRY_POINTS: Dict[str, List[str]] = {
     # Group: https://github.com/altair-viz/altair/blob/v4.2.0/altair/vegalite/v4/theme.py#L35
     "altair.vegalite.v5.theme": [
-        "accesible_theme = ub_accesible_theme_altair.theme:accesible_theme",
+        "accesible_theme = ub_accesible_theme_altair.themes:accesible_theme",
+        "dark_theme = ub_accesible_theme_altair.themes:my_theme",
+        "black_theme = ub_accesible_theme_altair.themes:black_theme",
     ],
 }
-DEPENDENCIES: List[str] = ["altair==5.*", "typing-extensions>=4.0, <5"]
+DEPENDENCIES: List[str] = ["altair==5.*", "typing-extensions>=4.0, <5", "jinja2==3.*"]
 
 
 setup(

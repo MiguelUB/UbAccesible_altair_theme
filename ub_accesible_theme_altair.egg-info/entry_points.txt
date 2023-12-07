@@ -1,2 +1,4 @@
 [altair.vegalite.v5.theme]
-accesible_theme = ub_accesible_theme_altair.theme:accesible_theme
+accesible_theme = ub_accesible_theme_altair.themes:accesible_theme
+black_theme = ub_accesible_theme_altair.themes:black_theme
+dark_theme = ub_accesible_theme_altair.themes:my_theme

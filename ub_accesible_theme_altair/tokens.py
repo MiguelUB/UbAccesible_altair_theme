@@ -1,9 +1,14 @@
+"""Design tokens for the theme and standalone use.
+https://vega.github.io/vega/docs/schemes/
 
-"""Design tokens for the theme and standalone use."""
+https://colorbrewer2.org/#type=sequential&scheme=YlGn&n=3
+
+https://github.com/ajrgodfrey/BrailleR
+"""
 
 from typing import Dict
 
-from .types import Color, Colors
+from ub_accesible_theme_altair.types_theme import Color, Colors
 
 FONT: str = "Roboto, Arial, sans-serif"
 
@@ -11,10 +16,11 @@ FONT_SIZES: Dict[str, int] = {"sm": 12, "md": 16, "lg": 20}
 
 OPACITIES: Dict[str, float] = {"md": 0.5}
 
+SYMBOL_SIZE: int = 40
+
 STROKE_WIDTHS: Dict[str, float] = {"sm": 0.5, "md": 1, "lg": 2}
 
 SPACING: Dict[str, int] = {"xs": 1, "sm": 2, "md": 4, "lg": 8, "xl": 20}
-
 
 COLOR_PRIMITIVES: Dict[str, Color] = {
     "blue": {
@@ -92,13 +98,13 @@ COLORS: Colors = {
     "schemes": {
         "categorical": {
             "default": [
-                COLOR_PRIMITIVES["blue"]["40"],
-                COLOR_PRIMITIVES["green"]["20"],
-                COLOR_PRIMITIVES["red"]["30"],
-                COLOR_PRIMITIVES["yellow"]["40"],
-                COLOR_PRIMITIVES["lavender"]["30"],
-                COLOR_PRIMITIVES["teal"]["40"],
-                COLOR_PRIMITIVES["neutral"]["50"],
+                COLOR_PRIMITIVES["blue"]["00"],
+                COLOR_PRIMITIVES["green"]["00"],
+                COLOR_PRIMITIVES["red"]["00"],
+                COLOR_PRIMITIVES["yellow"]["00"],
+                COLOR_PRIMITIVES["lavender"]["00"],
+                COLOR_PRIMITIVES["teal"]["00"],
+                COLOR_PRIMITIVES["neutral"]["00"],
             ],
             "status": [
                 COLOR_PRIMITIVES["green"]["30"],

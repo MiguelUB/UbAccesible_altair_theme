@@ -1,10 +1,9 @@
-
 """Here we define the type we will be using in each class, in order to create """
 
-from tokenize import group
 from typing import List, Optional
 
 from typing_extensions import TypedDict
+
 
 
 class Axis(TypedDict, total=False):
@@ -24,14 +23,31 @@ class Axis(TypedDict, total=False):
     tickOpacity: float
     ticks: bool
     tickSize: int
-    titleAlign: str
-    titleAngle: int
     titleColor: str
     titleFont: str
     titleFontSize: int
+
+class AxisBand(TypedDict):
+    domain: bool
+    labelPadding: int
+    ticks: bool
+
+class AxisY(TypedDict):
+    domain: bool
+    ticks: bool
+    titleAlign: str
+    titleAngle: int
     titleX: int
     titleY: int
 
+
+class AxisX(TypedDict):
+    domain: bool
+    ticks: bool
+    titleAlign: str
+    titleAngle: int
+    titleX: int
+    titleY: int
 
 class Legend(TypedDict):
     """`legend` configuration."""
@@ -46,6 +62,7 @@ class Legend(TypedDict):
     titlePadding: int
 
 
+
 class Mark(TypedDict, total=False):
     """`arc`, `bar`, `line`, `path`, `point`, `rect`, `rule`, `shape`, `text`, and `group` configurations."""
 
@@ -55,11 +72,11 @@ class Mark(TypedDict, total=False):
     font: str
     fontSize: int
     shape: str
-    stroke: Optional[str]
+    stroke: str
     strokeWidth: float
 
 
-class ScaleRange(TypedDict):
+class ScaleRange(TypedDict, total=False):
     """Scale `range` configuration."""
 
     category: List[str]
@@ -100,7 +117,7 @@ class View(TypedDict):
     stroke: str
 
 
-class Config(TypedDict):
+class Config(TypedDict, total=False):
     """Chart theme configuration."""
 
     axis: Axis
