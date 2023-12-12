@@ -22,8 +22,8 @@ class tema_daltonimo_deuteranopia():
         self.background = "#825471"
         self.config = config_model(background=self.background)
 
-    def get_theme(self) -> str:
-        return str(self.config.create_full_config())
+    def get_theme(self):
+        return self.config.create_config()
 
     def change_background_color(self):
         COLORS['background'] = '#d05949'
@@ -150,3 +150,5 @@ def accesible_theme() -> Theme:
 gg = tema_daltonimo_deuteranopia()
 def black_theme():
     return gg.get_theme()
+
+print(black_theme())
