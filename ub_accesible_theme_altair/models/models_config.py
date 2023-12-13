@@ -32,11 +32,11 @@ class config_model():
         # Actualizar atributos con kwargs
         self.__dict__.update(kwargs)
 
-        # Verificar tipos de datos para los parámetros obligatorios
+        '''# Verificar tipos de datos para los parámetros obligatorios
         for param, expected_type in self._required_params.items():
             if param in kwargs and not isinstance(getattr(self, param), expected_type):
                 raise TypeError(f"Se esperaba '{param}' como tipo {expected_type}.")
-
+        '''
         # Verificar que los parámetros obligatorios tengan valores
         missing_params = [param for param, expected_type in self._required_params.items() if
                           getattr(self, param, None) is None]

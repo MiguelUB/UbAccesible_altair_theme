@@ -110,7 +110,7 @@ COLORS: Colors = {
                 COLOR_PRIMITIVES["green"]["30"],
                 COLOR_PRIMITIVES["red"]["30"],
                 COLOR_PRIMITIVES["yellow"]["40"],
-            ],
+            ]
         },
         "diverging": {
             "bluered": [

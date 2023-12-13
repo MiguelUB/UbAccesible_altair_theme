@@ -17,7 +17,7 @@ class axis_model():
         self.domain = kwargs.get('domain', True)
         self.domainColor = kwargs.get('domainColor', COLORS["axis"])
         self.grid = kwargs.get('grid', True)
-        self.gridCap = kwargs.get('gridCap', 'round')
+        self.gridCap = kwargs.get('gridCap', 'round') # round, butt, square,
         self.gridColor = kwargs.get('gridColor', COLORS["grid"])
         self.gridDash = kwargs.get('gridDash', [2, 4])
         self.gridWidth = kwargs.get('gridWidth', STROKE_WIDTHS["sm"])

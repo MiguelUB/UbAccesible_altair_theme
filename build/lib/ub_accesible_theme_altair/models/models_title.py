@@ -17,11 +17,11 @@ class title_model():
         }
 
         # Establecer valores predeterminados
-        self.anchor = kwargs.get('anchor', 'start')
+        self.anchor = kwargs.get('anchor', 'start') # start, middle, end, None
         self.color = kwargs.get('color', COLORS["text"])
         self.font = kwargs.get('font', FONT)
         self.fontSize = kwargs.get('fontSize', FONT_SIZES["lg"])
-        self.fontWeight = kwargs.get('fontWeight', 'bold')
+        self.fontWeight = kwargs.get('fontWeight', 'bold') #bold lighter 100 200 900
         self.offset = kwargs.get('offset', SPACING["xl"])
         self.subtitleColor = kwargs.get('subtitleColor', COLORS["text"])
         self.subtitleFontSize = kwargs.get('subtitleFontSize', FONT_SIZES["md"])

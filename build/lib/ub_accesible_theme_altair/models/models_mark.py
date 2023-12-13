@@ -1,6 +1,7 @@
 from ub_accesible_theme_altair.tokens import COLORS, STROKE_WIDTHS, FONT, FONT_SIZES
 from ub_accesible_theme_altair.types_theme import Mark
 
+
 # https://github.com/altair-viz/altair/tree/e1bb266f91bd743c815fce9908d03d3bb1ad13fc/doc/user_guide/marks
 class mark_ark_model():
 
@@ -150,7 +151,7 @@ class mark_point_model():
         # Establecer valores predeterminados
         self.fill = kwargs.get('fill', COLORS['mark'])
         self.filled = kwargs.get('filled', True)
-        self.shape = kwargs.get('shape', 'circle')
+        self.shape = kwargs.get('shape', 'circle')  # circle square cross diamond triangle-up triangle-right
 
         # Actualizar atributos con kwargs
         self.__dict__.update(kwargs)
@@ -248,7 +249,7 @@ class mark_shape_model():
         }
 
         # Establecer valores predeterminados
-        self.stroke = kwargs.get('shape', COLORS["mark"])
+        self.stroke = kwargs.get('stroke', COLORS["mark"])
 
         # Actualizar atributos con kwargs
         self.__dict__.update(kwargs)

@@ -9,37 +9,38 @@ import altair as alt
 
 class tema_daltonimo_deuteranopia():
     name_theme = 'black_theme'
-    colors: Colors = {'axis': COLORS['axis'], 'background': COLORS['background'], 'text': COLORS['text'],
-                      'mark': COLORS['mark'], 'grid': COLORS['grid']}
+    colors: Colors = {'arc': '#FFFFFF', 'axis': COLORS['axis'], 'background': COLORS['background'],
+                      'text': COLORS['text'],
+                      'mark': COLORS['mark'], 'grid': COLORS['grid'], }
     font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
     spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
 
     # Variables a cambiar independientes
     axis_config = axis_model(gridColor=colors['axis'], labelColor=colors['axis'], tickOpacity=1.0,
-                             tickSize=spacing['md'], titleColor=[colors['text']], titleFontSize=font_size['sm'])
+                             tickSize=spacing['md'], titleColor=colors['text'], titleFontSize=font_size['sm']).create_axis()
     header_config = config = header_model(labelColor=colors['text'], labelFontSize=font_size['sm'],
                                           titleColor=colors['text'],
-                                          titleFontSize=font_size['md'])
+                                          titleFontSize=font_size['md']).create_header()
     legend_config = legend_model(labelColor=colors['axis'], labelFontSize=font_size['sm'], titleColor=colors['text'],
-                                 titleFontSize=font_size['sm'], titlePadding=spacing['md'])
+                                 titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
     range_config = range_model(category=COLORS['schemes']['categorical']['default'],
                                diverging=COLORS["schemes"]["diverging"]["bluered"],
                                heatmap=COLORS["schemes"]["sequential"]['blues'],
-                               ramp=COLORS["schemes"]["sequential"]["blues"])
+                               ramp=COLORS["schemes"]["sequential"]["blues"]).create_range()
     title_config = title_model(color=colors["text"], fontSize=font_size["lg"], subtitleColor=colors['text'],
-                               subtitleFontSize=font_size['md'])
-    view_config = view_model(stroke='tan')
+                               subtitleFontSize=font_size['md']).create_title()
+    view_config = view_model(stroke='tan').create_view()
 
     # Mark config
-    arc_config = mark_ark_model(stroke=colors['arc'])
-    bar_config = mark_bar_model(fill=colors['mark'], stroke=None)
-    line_config = mark_line_model(stroke=colors['mark'])
-    path_config = mark_path_model(stroke=colors['mark'])
-    point_config = mark_point_model(fill=colors["mark"], filled=True)
-    rect_config = mark_rect_model(fill=colors["mark"])
-    rule_config = mark_rule_model(stroke=colors['mark'])
-    shape_config = mark_shape_model(stroke=colors['mark'])
-    text_config = mark_text_model(color=colors["text"], fontSize=font_size['sm'])
+    arc_config = mark_ark_model(stroke=colors['arc']).create_mark_ark()
+    bar_config = mark_bar_model(fill=colors['mark'], stroke=colors['arc']).create_mark_bar()
+    line_config = mark_line_model(stroke=colors['mark']).create_mark_line()
+    path_config = mark_path_model(stroke=colors['mark']).create_mark_path()
+    point_config = mark_point_model(fill=colors["mark"], filled=True).create_mark_point()
+    rect_config = mark_rect_model(fill=colors["mark"]).create_mark_rect()
+    rule_config = mark_rule_model(stroke=colors['mark']).create_mark_rule()
+    shape_config = mark_shape_model(stroke=colors['mark']).create_mark_shape()
+    text_config = mark_text_model(color=colors["text"], fontSize=font_size['sm']).create_mark_text()
 
     def __init__(self):
         self.config = config_model(background=self.colors['background'],
