@@ -54,7 +54,7 @@ class tema_daltonimo_deuteranopia():
                                    text=self.text_config)
 
     def get_theme(self):
-        return self.config.create_config()
+        return self.config.create_full_config()
 
     def change_background_color(self, new_color):
         self.colors['background'] = new_color

@@ -45,7 +45,7 @@ class config_model():
                 f"Los siguientes parámetros son obligatorios y no fueron proporcionados: {missing_params}")
 
     def create_config(self):
-        new_config = Config(
+        new_config = {'config': Config(
             axis=self.axis,
             legend=self.legend,
             range=self.range,
@@ -53,7 +53,7 @@ class config_model():
             header=self.header,
             title=self.title,
             view=self.view
-        )
+        )}
         return new_config
 
     def create_full_config(self):
@@ -64,9 +64,7 @@ class config_model():
         """
         result_dict = self.__dict__.copy()
         result_dict.pop('_required_params', None)
-        return result_dict
+        return {"config":result_dict}
 
     def __str__(self):
         return str(self.create_full_config())
-
-

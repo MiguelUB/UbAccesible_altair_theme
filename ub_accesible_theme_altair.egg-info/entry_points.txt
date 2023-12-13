@@ -2,3 +2,4 @@
 accesible_theme = ub_accesible_theme_altair.themes:accesible_theme
 dark_theme = ub_accesible_theme_altair.themes:my_theme
 deuteranopia_theme = ub_accesible_theme_altair.themes:black_theme
+
