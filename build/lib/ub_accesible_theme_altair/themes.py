@@ -23,9 +23,9 @@ class tema_daltonimo_deuteranopia():
                                           titleFontSize=font_size['md']).create_header()
     legend_config = legend_model(labelColor=colors['axis'], labelFontSize=font_size['sm'], titleColor=colors['text'],
                                  titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
-    range_config = range_model(category=COLORS['schemes']['categorical']['default'],
-                               diverging=COLORS["schemes"]["diverging"]["bluered"],
-                               heatmap=COLORS["schemes"]["sequential"]['blues'],
+    range_config = range_model(category=COLORS['schemes']['categorical']['ibm'],
+                               diverging=COLORS["schemes"]["categorical"]["tol"],
+                               heatmap=COLORS["schemes"]["sequential"]['oranges'],
                                ramp=COLORS["schemes"]["sequential"]["blues"]).create_range()
     title_config = title_model(color=colors["text"], fontSize=font_size["lg"], subtitleColor=colors['text'],
                                subtitleFontSize=font_size['md']).create_title()
@@ -54,7 +54,7 @@ class tema_daltonimo_deuteranopia():
                                    text=self.text_config)
 
     def get_theme(self):
-        return self.config.create_config()
+        return self.config.create_full_config()
 
     def change_background_color(self, new_color):
         self.colors['background'] = new_color

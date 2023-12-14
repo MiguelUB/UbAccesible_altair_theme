@@ -5,7 +5,6 @@ from typing import List, Optional
 from typing_extensions import TypedDict
 
 
-
 class Axis(TypedDict, total=False):
     """`axis`, `axisBand`, and `axisY` configurations."""
 
@@ -27,10 +26,12 @@ class Axis(TypedDict, total=False):
     titleFont: str
     titleFontSize: int
 
+
 class AxisBand(TypedDict):
     domain: bool
     labelPadding: int
     ticks: bool
+
 
 class AxisY(TypedDict):
     domain: bool
@@ -49,6 +50,7 @@ class AxisX(TypedDict):
     titleX: int
     titleY: int
 
+
 class Legend(TypedDict):
     """`legend` configuration."""
 
@@ -60,7 +62,6 @@ class Legend(TypedDict):
     titleFont: str
     titleFontSize: int
     titlePadding: int
-
 
 
 class Mark(TypedDict, total=False):
@@ -151,7 +152,9 @@ class Categorical(TypedDict):
     """Categorical color scheme configurations."""
 
     default: List[str]
-    status: List[str]
+    ibm: List[str]
+    wong: List[str]
+    tol: List[str]
 
 
 class Diverging(TypedDict):
@@ -172,6 +175,8 @@ class Sequential(TypedDict):
     teals: List[str]
     lavenders: List[str]
     grays: List[str]
+    oranges: List[str]
+    pinks: List[str]
 
 
 class ColorScheme(TypedDict):

@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.19' #Muy importante, deberéis ir cambiando la versión de vuestra librería según incluyáis nuevas funcionalidades
+VERSION = '0.0.21' #Muy importante, deberéis ir cambiando la versión de vuestra librería según incluyáis nuevas funcionalidades
 PACKAGE_NAME = 'ub_accesible_theme_altair' #Debe coincidir con el nombre de la carpeta
 AUTHOR = 'Miguel Huayllas' #Modificar con vuestros datos
 AUTHOR_EMAIL = 'mhuaylch10@alumnes.ub.edu' #Modificar con vuestros datos

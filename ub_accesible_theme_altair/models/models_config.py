@@ -64,7 +64,7 @@ class config_model():
         """
         result_dict = self.__dict__.copy()
         result_dict.pop('_required_params', None)
-        return {"config":result_dict}
+        return {"config": result_dict}
 
     def __str__(self):
         return str(self.create_full_config())

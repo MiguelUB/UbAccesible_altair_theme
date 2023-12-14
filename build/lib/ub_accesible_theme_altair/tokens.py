@@ -77,6 +77,24 @@ COLOR_PRIMITIVES: Dict[str, Color] = {
         "50": "#00726F",
         "60": "#006360",
     },
+    "pink": {
+        "00": "#f7cbe0",
+        "10": "#ee94c0",
+        "20": "#e55d9f",
+        "30": "#dc267f",
+        "40": "#a71b60",
+        "50": "#701240",
+        "60": "#390921",
+    },
+    "orange": {
+        "00": "#ffd7be",
+        "10": "#ffb07f",
+        "20": "#ff883f",
+        "30": "#fe6100",
+        "40": "#be4900",
+        "50": "#7f3000",
+        "60": "#3f1800",
+    },
     "neutral": {
         "00": "#F0F1F6",
         "10": "#E1E2E7",
@@ -98,18 +116,40 @@ COLORS: Colors = {
     "schemes": {
         "categorical": {
             "default": [
-                COLOR_PRIMITIVES["blue"]["00"],
-                COLOR_PRIMITIVES["green"]["00"],
-                COLOR_PRIMITIVES["red"]["00"],
-                COLOR_PRIMITIVES["yellow"]["00"],
-                COLOR_PRIMITIVES["lavender"]["00"],
-                COLOR_PRIMITIVES["teal"]["00"],
-                COLOR_PRIMITIVES["neutral"]["00"],
-            ],
-            "status": [
-                COLOR_PRIMITIVES["green"]["30"],
-                COLOR_PRIMITIVES["red"]["30"],
+                COLOR_PRIMITIVES["blue"]["40"],
+                COLOR_PRIMITIVES["green"]["40"],
+                COLOR_PRIMITIVES["red"]["40"],
                 COLOR_PRIMITIVES["yellow"]["40"],
+                COLOR_PRIMITIVES["lavender"]["40"],
+                COLOR_PRIMITIVES["teal"]["40"],
+                COLOR_PRIMITIVES["neutral"]["40"],
+            ],
+            "ibm": [
+                COLOR_PRIMITIVES["blue"]["20"],
+                COLOR_PRIMITIVES["lavender"]["40"],
+                COLOR_PRIMITIVES["pink"]["30"],
+                COLOR_PRIMITIVES["orange"]["30"],
+                COLOR_PRIMITIVES["yellow"]["40"]
+            ],
+            'wong': [
+                COLOR_PRIMITIVES["neutral"]["60"],
+                COLOR_PRIMITIVES["orange"]["20"],
+                COLOR_PRIMITIVES["blue"]["20"],
+                COLOR_PRIMITIVES["green"]["30"],
+                COLOR_PRIMITIVES["yellow"]["20"],
+                COLOR_PRIMITIVES["blue"]["50"],
+                COLOR_PRIMITIVES["orange"]["40"],
+                COLOR_PRIMITIVES["pink"]["20"],
+            ],
+            'tol': [
+                COLOR_PRIMITIVES["lavender"]["60"],
+                COLOR_PRIMITIVES["green"]["40"],
+                COLOR_PRIMITIVES["teal"]["40"],
+                COLOR_PRIMITIVES["teal"]["20"],
+                COLOR_PRIMITIVES["yellow"]["10"],
+                COLOR_PRIMITIVES["red"]["20"],
+                COLOR_PRIMITIVES["pink"]["30"],
+                COLOR_PRIMITIVES["pink"]["50"],
             ]
         },
         "diverging": {
@@ -205,6 +245,24 @@ COLORS: Colors = {
                 COLOR_PRIMITIVES["neutral"]["10"],
                 COLOR_PRIMITIVES["neutral"]["00"],
             ],
+            "oranges":[
+                COLOR_PRIMITIVES["orange"]["60"],
+                COLOR_PRIMITIVES["orange"]["50"],
+                COLOR_PRIMITIVES["orange"]["40"],
+                COLOR_PRIMITIVES["orange"]["30"],
+                COLOR_PRIMITIVES["orange"]["20"],
+                COLOR_PRIMITIVES["orange"]["10"],
+                COLOR_PRIMITIVES["orange"]["00"],
+            ],
+            "pinks": [
+                COLOR_PRIMITIVES["pink"]["60"],
+                COLOR_PRIMITIVES["pink"]["50"],
+                COLOR_PRIMITIVES["pink"]["40"],
+                COLOR_PRIMITIVES["pink"]["30"],
+                COLOR_PRIMITIVES["pink"]["20"],
+                COLOR_PRIMITIVES["pink"]["10"],
+                COLOR_PRIMITIVES["pink"]["00"],
+            ]
         },
     },
 }
