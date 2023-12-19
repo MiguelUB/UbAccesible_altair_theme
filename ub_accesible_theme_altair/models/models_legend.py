@@ -2,7 +2,7 @@ from ub_accesible_theme_altair.tokens import COLORS, FONT, FONT_SIZES, SYMBOL_SI
 from ub_accesible_theme_altair.types_theme import Legend
 
 
-class legend_model():
+class LegendModel():
 
     def __init__(self, **kwargs):
         self._required_params = {

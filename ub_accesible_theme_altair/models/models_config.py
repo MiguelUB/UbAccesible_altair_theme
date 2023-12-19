@@ -1,13 +1,13 @@
-from ub_accesible_theme_altair.models.models_axis import axis_model
-from ub_accesible_theme_altair.models.models_header import header_model
-from ub_accesible_theme_altair.models.models_legend import legend_model
-from ub_accesible_theme_altair.models.models_range import range_model
-from ub_accesible_theme_altair.models.models_title import title_model
-from ub_accesible_theme_altair.models.models_view import view_model
+from ub_accesible_theme_altair.models.models_axis import AxisModel
+from ub_accesible_theme_altair.models.models_header import HeaderModel
+from ub_accesible_theme_altair.models.models_legend import LegendModel
+from ub_accesible_theme_altair.models.models_range import RangeModel
+from ub_accesible_theme_altair.models.models_title import TitleModel
+from ub_accesible_theme_altair.models.models_view import ViewModel
 from ub_accesible_theme_altair.types_theme import Config, Axis, Legend, ScaleRange, Header, Title, View
 
 
-class config_model():
+class ConfigModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -21,13 +21,13 @@ class config_model():
         }
 
         # Establecer valores predeterminados
-        self.axis = kwargs.get('axis', axis_model().create_axis())
-        self.legend = kwargs.get('legend', legend_model().create_legend())
-        self.range = kwargs.get('range', range_model().create_range())
+        self.axis = kwargs.get('axis', AxisModel().create_axis())
+        self.legend = kwargs.get('legend', LegendModel().create_legend())
+        self.range = kwargs.get('range', RangeModel().create_range())
         self.background = kwargs.get('background', '#FFFFFF')
-        self.header = kwargs.get('header', header_model().create_header())
-        self.title = kwargs.get('title', title_model().create_title())
-        self.view = kwargs.get('view', view_model().create_view())
+        self.header = kwargs.get('header', HeaderModel().create_header())
+        self.title = kwargs.get('title', TitleModel().create_title())
+        self.view = kwargs.get('view', ViewModel().create_view())
 
         # Actualizar atributos con kwargs
         self.__dict__.update(kwargs)

@@ -19,5 +19,6 @@ ub_accesible_theme_altair/models/models_header.py
 ub_accesible_theme_altair/models/models_legend.py
 ub_accesible_theme_altair/models/models_mark.py
 ub_accesible_theme_altair/models/models_range.py
+ub_accesible_theme_altair/models/models_theme.py
 ub_accesible_theme_altair/models/models_title.py
 ub_accesible_theme_altair/models/models_view.py

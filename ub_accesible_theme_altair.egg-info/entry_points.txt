@@ -1,4 +1,6 @@
 [altair.vegalite.v5.theme]
-accesible_theme = ub_accesible_theme_altair.themes:accesible_theme
-dark_theme = ub_accesible_theme_altair.themes:my_theme
-deuteranopia_theme = ub_accesible_theme_altair.themes:black_theme
+accesible_theme = ub_accesible_theme_altair.themes:accessible_theme
+dark_accessible_theme = ub_accesible_theme_altair.themes:dark_accessible_theme
+deuteranopia_theme = ub_accesible_theme_altair.themes:deuteranopia_theme
+protonopia_theme = ub_accesible_theme_altair.themes:protonopia_theme
+tritanopia_theme = ub_accesible_theme_altair.themes:tritanopia_theme

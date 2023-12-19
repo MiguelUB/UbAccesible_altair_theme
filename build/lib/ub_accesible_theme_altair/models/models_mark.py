@@ -3,7 +3,7 @@ from ub_accesible_theme_altair.types_theme import Mark
 
 
 # https://github.com/altair-viz/altair/tree/e1bb266f91bd743c815fce9908d03d3bb1ad13fc/doc/user_guide/marks
-class mark_ark_model():
+class MarkArkModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -38,7 +38,7 @@ class mark_ark_model():
         return new_mark
 
 
-class mark_bar_model():
+class MarkBarModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -73,7 +73,7 @@ class mark_bar_model():
         return new_mark
 
 
-class mark_line_model():
+class MarkLineModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -107,7 +107,7 @@ class mark_line_model():
         return new_mark
 
 
-class mark_path_model():
+class MarkPathModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -141,7 +141,7 @@ class mark_path_model():
         return new_mark
 
 
-class mark_point_model():
+class MarkPointModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -177,7 +177,7 @@ class mark_point_model():
         return new_mark
 
 
-class mark_rect_model():
+class MarkRectModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -209,7 +209,7 @@ class mark_rect_model():
         return new_mark
 
 
-class mark_rule_model():
+class MarkRuleModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -241,7 +241,7 @@ class mark_rule_model():
         return new_mark
 
 
-class mark_shape_model():
+class MarkShapeModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -273,7 +273,7 @@ class mark_shape_model():
         return new_mark
 
 
-class mark_text_model():
+class MarkTextModel():
 
     def __init__(self, **kwargs):
         self._required_params = {

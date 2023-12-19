@@ -155,6 +155,7 @@ class Categorical(TypedDict):
     ibm: List[str]
     wong: List[str]
     tol: List[str]
+    qualitative: List[str]
 
 
 class Diverging(TypedDict):

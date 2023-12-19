@@ -2,7 +2,7 @@ from ub_accesible_theme_altair.tokens import COLORS, STROKE_WIDTHS, FONT, SPACIN
 from ub_accesible_theme_altair.types_theme import Axis, AxisBand, AxisY, AxisX
 
 
-class axis_model():
+class AxisModel():
 
     def __init__(self, **kwargs):
 
@@ -70,7 +70,7 @@ class axis_model():
         return new_axis
 
 
-class axis_band_model():
+class AxisBandModel():
 
     def __init__(self, **kwargs):
 
@@ -106,7 +106,7 @@ class axis_band_model():
         return new_axis_band
 
 
-class axis_y_model():
+class AxisYModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
@@ -149,7 +149,7 @@ class axis_y_model():
         return new_axis_y
 
 
-class axis_x_model():
+class AxisXModel():
 
     def __init__(self, **kwargs):
         self._required_params = {

@@ -12,7 +12,7 @@ from ub_accesible_theme_altair.types_theme import Color, Colors
 
 FONT: str = "Roboto, Arial, sans-serif"
 
-FONT_SIZES: Dict[str, int] = {"sm": 12, "md": 16, "lg": 20}
+FONT_SIZES: Dict[str, int] = {"sm": 14, "md": 18, "lg": 22}
 
 OPACITIES: Dict[str, float] = {"md": 0.5}
 
@@ -108,9 +108,9 @@ COLOR_PRIMITIVES: Dict[str, Color] = {
 
 COLORS: Colors = {
     "arc": "#FFFFFF",
-    "axis": COLOR_PRIMITIVES["neutral"]["30"],
-    "background": "#FFFFFF",
-    "grid": COLOR_PRIMITIVES["neutral"]["20"],
+    "axis": COLOR_PRIMITIVES["neutral"]["60"],
+    "background": "#E9E8E8",
+    "grid": COLOR_PRIMITIVES["neutral"]["60"],
     "mark": COLOR_PRIMITIVES["blue"]["40"],
     "text": COLOR_PRIMITIVES["neutral"]["50"],
     "schemes": {
@@ -123,6 +123,13 @@ COLORS: Colors = {
                 COLOR_PRIMITIVES["lavender"]["40"],
                 COLOR_PRIMITIVES["teal"]["40"],
                 COLOR_PRIMITIVES["neutral"]["40"],
+            ],
+            "qualitative": [
+                COLOR_PRIMITIVES["blue"]["20"],
+                COLOR_PRIMITIVES["green"]["40"],
+                COLOR_PRIMITIVES["green"]["20"],
+                COLOR_PRIMITIVES["green"]["40"],
+                COLOR_PRIMITIVES["red"]["20"],
             ],
             "ibm": [
                 COLOR_PRIMITIVES["blue"]["20"],
@@ -245,7 +252,7 @@ COLORS: Colors = {
                 COLOR_PRIMITIVES["neutral"]["10"],
                 COLOR_PRIMITIVES["neutral"]["00"],
             ],
-            "oranges":[
+            "oranges": [
                 COLOR_PRIMITIVES["orange"]["60"],
                 COLOR_PRIMITIVES["orange"]["50"],
                 COLOR_PRIMITIVES["orange"]["40"],

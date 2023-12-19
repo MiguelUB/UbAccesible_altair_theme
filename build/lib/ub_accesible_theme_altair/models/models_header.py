@@ -2,7 +2,7 @@ from ub_accesible_theme_altair.tokens import FONT, FONT_SIZES, COLORS
 from ub_accesible_theme_altair.types_theme import Header
 
 
-class header_model():
+class HeaderModel():
 
     def __init__(self, **kwargs):
         self._required_params = {

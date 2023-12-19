@@ -5,7 +5,7 @@ from ub_accesible_theme_altair.tokens import COLORS
 from ub_accesible_theme_altair.types_theme import ScaleRange
 
 
-class range_model():
+class RangeModel():
 
     def __init__(self, **kwargs):
 

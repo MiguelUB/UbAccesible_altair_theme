@@ -2,7 +2,7 @@ from ub_accesible_theme_altair.tokens import COLORS, FONT, FONT_SIZES, SPACING
 from ub_accesible_theme_altair.types_theme import Title
 
 
-class title_model():
+class TitleModel():
 
     def __init__(self, **kwargs):
         self._required_params = {

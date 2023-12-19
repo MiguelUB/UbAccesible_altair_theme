@@ -1,7 +1,7 @@
 from ub_accesible_theme_altair.types_theme import View
 
 
-class view_model():
+class ViewModel():
 
     def __init__(self, **kwargs):
         self._required_params = {
