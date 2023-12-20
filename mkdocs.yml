@@ -27,8 +27,6 @@ theme:
       primary: teal
       accent: lime
 
-
-
 extra:
   social:
     - icon: fontawesome/brands/github-alt
