@@ -12,7 +12,7 @@ from ub_accesible_theme_altair.types_theme import Color, Colors
 
 FONT: str = "Roboto, Arial, sans-serif"
 
-FONT_SIZES: Dict[str, int] = {"sm": 15, "md": 19, "lg": 23}
+FONT_SIZES: Dict[str, int] = {"sm": 14, "md": 18, "lg": 22}
 
 OPACITIES: Dict[str, float] = {"md": 0.5}
 

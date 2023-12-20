@@ -26,7 +26,7 @@ class ThemeDaltonismDeuteranopia():
     spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
 
     # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['axis'], tickOpacity=1.0, gridDash=[1, 2],
+    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
                             gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
                             titleFontSize=font_size['sm']).create_axis()
 
@@ -34,7 +34,7 @@ class ThemeDaltonismDeuteranopia():
                                          titleColor=colors['text'],
                                          titleFontSize=font_size['md']).create_header()
 
-    legend_config = LegendModel(labelColor=colors['axis'], labelFontSize=font_size['sm'], titleColor=colors['text'],
+    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
                                 titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
 
     range_config = RangeModel(category=COLORS['schemes']['categorical']['ibm'],
@@ -117,7 +117,7 @@ class ThemeDaltonismProtonopia():
     spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
 
     # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['axis'], tickOpacity=1.0, gridDash=[1, 2],
+    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
                             gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
                             titleFontSize=font_size['sm']).create_axis()
 
@@ -125,7 +125,7 @@ class ThemeDaltonismProtonopia():
                                          titleColor=colors['text'],
                                          titleFontSize=font_size['md']).create_header()
 
-    legend_config = LegendModel(labelColor=colors['axis'], labelFontSize=font_size['sm'], titleColor=colors['text'],
+    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
                                 titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
 
     range_config = RangeModel(category=COLORS['schemes']['categorical']['ibm'],
@@ -207,7 +207,7 @@ class ThemeDaltonismTritanopia():
     spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
 
     # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['axis'], tickOpacity=1.0, gridDash=[1, 2],
+    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
                             gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
                             titleFontSize=font_size['sm']).create_axis()
 
@@ -215,7 +215,7 @@ class ThemeDaltonismTritanopia():
                                          titleColor=colors['text'],
                                          titleFontSize=font_size['md']).create_header()
 
-    legend_config = LegendModel(labelColor=colors['axis'], labelFontSize=font_size['sm'], titleColor=colors['text'],
+    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
                                 titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
 
     range_config = RangeModel(category=COLORS['schemes']['categorical']['ibm'],
@@ -297,7 +297,7 @@ class ThemeAccesible():
     spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
 
     # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['axis'], tickOpacity=1.0, gridDash=[1, 2],
+    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
                             gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
                             titleFontSize=font_size['sm']).create_axis()
 
@@ -305,7 +305,7 @@ class ThemeAccesible():
                                          titleColor=colors['text'],
                                          titleFontSize=font_size['md']).create_header()
 
-    legend_config = LegendModel(labelColor=colors['axis'], labelFontSize=font_size['sm'], titleColor=colors['text'],
+    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
                                 titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
 
     range_config = RangeModel(category=COLORS['schemes']['categorical']['qualitative'],
@@ -380,14 +380,14 @@ class DarkThemeAccesible():
     The class is responsible for creating models according to what the Vega-Altair API expects.
     """
     name_theme = 'accesible_theme'
-    colors: Colors = {'arc': '#FFFFFF', 'axis': "#000000", 'background': "#333333",
-                      'text': "#000000",
+    colors: Colors = {'arc': '#FFFFFF', 'axis': "#FFFFFF", 'background': "#333333",
+                      'text': "#FFFFFF",
                       'mark': COLOR_PRIMITIVES["blue"]["30"], 'grid': "#000000", }
     font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
     spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
 
     # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['axis'], tickOpacity=1.0, gridDash=[1, 2],
+    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
                             gridOpacity=0.4, tickSize=spacing['md'], titleColor=colors['text'],
                             titleFontSize=font_size['sm']).create_axis()
 
@@ -395,7 +395,7 @@ class DarkThemeAccesible():
                                          titleColor=colors['text'],
                                          titleFontSize=font_size['md']).create_header()
 
-    legend_config = LegendModel(labelColor=colors['axis'], labelFontSize=font_size['sm'], titleColor=colors['text'],
+    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
                                 titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
 
     range_config = RangeModel(category=COLORS['schemes']['categorical']['qualitative'],
