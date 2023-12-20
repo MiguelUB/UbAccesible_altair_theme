@@ -1,4 +1,5 @@
 site_name: Vega Altair Accessible Theme
+site_url: https://miguelub.github.io/UbAccesible_altair_theme/
 theme:
   name: material
   features:
@@ -50,4 +51,4 @@ markdown_extensions:
   - attr_list
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/"  target="_blank" rel="noopener"> Github</a>
+  &copy; 2023 <a href="https://github.com/MiguelUB/UbAccesible_altair_theme"  target="_blank" rel="noopener"> Github</a>
