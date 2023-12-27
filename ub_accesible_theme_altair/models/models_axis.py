@@ -17,9 +17,9 @@ class AxisModel():
         self.domain = kwargs.get('domain', True)
         self.domainColor = kwargs.get('domainColor', COLORS["axis"])
         self.grid = kwargs.get('grid', True)
-        self.gridCap = kwargs.get('gridCap', 'round') # round, butt, square,
-        self.gridColor = kwargs.get('gridColor', COLORS["grid"])
-        self.gridDash = kwargs.get('gridDash', [2, 4])
+        self.gridCap = kwargs.get('gridCap', 'round')  # round, butt, square,
+        self.gridColor = kwargs.get('gridColor', COLORS["axis"])
+        self.gridDash = kwargs.get('gridDash', [1, 1])
         self.gridWidth = kwargs.get('gridWidth', STROKE_WIDTHS["sm"])
         self.labelColor = kwargs.get('labelColor', COLORS["axis"])
         self.labelFont = kwargs.get('labelFont', FONT)
@@ -190,6 +190,3 @@ class AxisXModel():
             titleY=self.titleY
         )
         return new_axis_x
-
-
-

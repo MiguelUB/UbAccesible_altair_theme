@@ -11,8 +11,8 @@ class RangeModel():
 
 
         # Establecer valores predeterminados
-        self.category = kwargs.get('category', COLORS["schemes"]["categorical"]["default"])
-        self.diverging = kwargs.get('diverging', COLORS["schemes"]["diverging"]["tealred"])
+        self.category = kwargs.get('category', COLORS["schemes"]["categorical"]["dark2"])
+        self.diverging = kwargs.get('diverging', COLORS["schemes"]["diverging"]["bluered"])
         self.heatmap = kwargs.get('heatmap', COLORS["schemes"]["sequential"]["blues"])
         self.ramp = kwargs.get('ramp', COLORS["schemes"]["sequential"]["blues"])
 

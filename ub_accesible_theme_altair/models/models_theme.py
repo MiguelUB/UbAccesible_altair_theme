@@ -1,3 +1,5 @@
+from typing import List
+
 from ub_accesible_theme_altair.models.models_axis import AxisModel
 from ub_accesible_theme_altair.models.models_config import ConfigModel
 from ub_accesible_theme_altair.models.models_header import HeaderModel
@@ -6,58 +8,71 @@ from ub_accesible_theme_altair.models.models_mark import *
 from ub_accesible_theme_altair.models.models_range import RangeModel
 from ub_accesible_theme_altair.models.models_title import TitleModel
 from ub_accesible_theme_altair.models.models_view import ViewModel
-from ub_accesible_theme_altair.tokens import COLORS, FONT, FONT_SIZES, OPACITIES, SPACING, STROKE_WIDTHS, \
+from ub_accesible_theme_altair.tokens import COLORS, FONT, FONT_SIZES, OPACITIES, SPACING, \
     COLOR_PRIMITIVES
-from ub_accesible_theme_altair.types_theme import Theme, Legend, View, Colors
+from ub_accesible_theme_altair.types_theme import Colors
 import altair as alt
 
 
-class ThemeDaltonismDeuteranopia():
-    """
-    This class incorporates colors for the type of color blindness - deuteranopia (Absence of GREEN photoreceptors).
-    The class is responsible for creating models according to what the Vega-Altair API expects.
-    """
-    name_theme = 'deuteranopia_theme'
-    colors: Colors = {'arc': '#FFFFFF', 'axis': COLORS['axis'], 'background': COLORS['background'],
-                      'text': COLORS['text'],
-                      'mark': COLOR_PRIMITIVES["lavender"]["40"],
-                      'grid': COLORS['grid'], }
-    font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
-    spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
+class ModelTheme:
 
-    # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
-                            gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
-                            titleFontSize=font_size['sm']).create_axis()
+    def __init__(self, name_theme: str, text_color: str, axis_color: str, mark_color: str,
+                 background_color: str, grid: bool):
+        self.colors: Colors = {'arc': '#FFFFFF', 'axis': COLORS['axis'], 'background': COLORS['background'],
+                               'text': COLORS['text'],
+                               'mark': COLOR_PRIMITIVES["lavender"]["40"],
+                               "schemes": {
+                                   "categorical": COLORS['schemes']['categorical']['dark2'],
+                                   "diverging": COLORS['schemes']['diverging']['bluered'],
+                                   "sequential": COLORS['schemes']['sequential']['blues']}}
+        self.font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
+        self.spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
+        self.name_theme = name_theme
+        self.colors['background'] = background_color
+        self.colors['text'] = text_color
+        self.colors['axis'] = axis_color
+        self.colors['mark'] = mark_color
+        self.grid = grid
 
-    header_config = config = HeaderModel(labelColor=colors['text'], labelFontSize=font_size['sm'],
-                                         titleColor=colors['text'],
-                                         titleFontSize=font_size['md']).create_header()
+        self.axis_config = AxisModel(gridColor=self.colors['axis'], labelColor=self.colors['text'], tickOpacity=1.0,
+                                     gridOpacity=0.3, grid=self.grid,
+                                     domainColor=self.colors['text'],
+                                     tickSize=self.spacing['md'],
+                                     tickColor=self.colors['axis'],
+                                     titleColor=self.colors['text'],
+                                     titleFontSize=self.font_size['sm']).create_axis()
 
-    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
-                                titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
+        self.header_config = HeaderModel(labelColor=self.colors['text'], labelFontSize=self.font_size['sm'],
+                                         titleColor=self.colors['text'],
+                                         titleFontSize=self.font_size['md']).create_header()
 
-    range_config = RangeModel(category=COLORS['schemes']['categorical']['ibm'],
-                              diverging='purplegreen',
-                              heatmap=COLORS["schemes"]["sequential"]['oranges'],
-                              ramp=COLORS["schemes"]["sequential"]["oranges"]).create_range()
+        self.legend_config = LegendModel(labelColor=self.colors['text'], labelFontSize=self.font_size['sm'],
+                                         titleColor=self.colors['text'],
+                                         titleFontSize=self.font_size['sm'],
+                                         titlePadding=self.spacing['md']).create_legend()
 
-    title_config = TitleModel(color=colors["text"], fontSize=font_size["lg"], subtitleColor=colors['text'],
-                              subtitleFontSize=font_size['md']).create_title()
-    view_config = ViewModel(stroke='tan').create_view()
+        self.title_config = TitleModel(color=self.colors["text"], fontSize=self.font_size["lg"],
+                                       subtitleColor=self.colors['text'],
+                                       subtitleFontSize=self.font_size['md']).create_title()
+        self.view_config = ViewModel(stroke='tan').create_view()
 
-    # Mark config
-    arc_config = MarkArkModel(stroke=colors['arc']).create_mark_ark()
-    bar_config = MarkBarModel(fill=colors['mark'], stroke=colors['arc']).create_mark_bar()
-    line_config = MarkLineModel(stroke=colors['mark']).create_mark_line()
-    path_config = MarkPathModel(stroke=colors['mark']).create_mark_path()
-    point_config = MarkPointModel(fill=colors["mark"], filled=True).create_mark_point()
-    rect_config = MarkRectModel(fill=colors["mark"]).create_mark_rect()
-    rule_config = MarkRuleModel(stroke=colors['mark']).create_mark_rule()
-    shape_config = MarkShapeModel(stroke=colors['mark']).create_mark_shape()
-    text_config = MarkTextModel(color=colors["text"], fontSize=font_size['sm']).create_mark_text()
+        # Color Schemes config
+        self.range_config = RangeModel(category=self.colors['schemes']["categorical"],
+                                       diverging=self.colors['schemes']["diverging"],
+                                       heatmap=self.colors['schemes']["sequential"],
+                                       ramp=self.colors['schemes']["sequential"]).create_range()
 
-    def __init__(self):
+        # Marks config
+        self.arc_config = MarkArkModel(stroke=self.colors['arc']).create_mark_ark()
+        self.bar_config = MarkBarModel(fill=self.colors['mark'], stroke=self.colors['arc']).create_mark_bar()
+        self.line_config = MarkLineModel(stroke=self.colors['mark']).create_mark_line()
+        self.path_config = MarkPathModel(stroke=self.colors['mark']).create_mark_path()
+        self.point_config = MarkPointModel(fill=self.colors["mark"], filled=True).create_mark_point()
+        self.rect_config = MarkRectModel(fill=self.colors["mark"]).create_mark_rect()
+        self.rule_config = MarkRuleModel(stroke=self.colors['mark']).create_mark_rule()
+        self.shape_config = MarkShapeModel(stroke=self.colors['mark']).create_mark_shape()
+        self.text_config = MarkTextModel(color=self.colors["text"], fontSize=self.font_size['sm']).create_mark_text()
+
         self.config = ConfigModel(background=self.colors['background'],
                                   axis=self.axis_config, header=self.header_config,
                                   legend=self.legend_config, range=self.range_config,
@@ -69,86 +84,44 @@ class ThemeDaltonismDeuteranopia():
                                   text=self.text_config)
 
     def get_theme(self):
-        return self.config.create_full_config()
+        self.axis_config = AxisModel(gridColor=self.colors['axis'], labelColor=self.colors['text'], tickOpacity=1.0,
+                                     gridOpacity=0.3, grid=self.grid,
+                                     domainColor=self.colors['text'],
+                                     tickSize=self.spacing['md'],
+                                     tickColor=self.colors['axis'],
+                                     titleColor=self.colors['text'],
+                                     titleFontSize=self.font_size['sm']).create_axis()
 
-    def change_background_color(self, new_color):
-        self.colors['background'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
+        self.header_config = HeaderModel(labelColor=self.colors['text'], labelFontSize=self.font_size['sm'],
+                                         titleColor=self.colors['text'],
+                                         titleFontSize=self.font_size['md']).create_header()
 
-    def change_mark_color(self, new_color):
-        self.colors['mark'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
+        self.legend_config = LegendModel(labelColor=self.colors['text'], labelFontSize=self.font_size['sm'],
+                                         titleColor=self.colors['text'],
+                                         titleFontSize=self.font_size['sm'],
+                                         titlePadding=self.spacing['md']).create_legend()
 
-    def change_text_color(self, new_color):
-        self.colors['text'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
+        self.title_config = TitleModel(color=self.colors["text"], fontSize=self.font_size["lg"],
+                                       subtitleColor=self.colors['text'],
+                                       subtitleFontSize=self.font_size['md']).create_title()
+        self.view_config = ViewModel(stroke='tan').create_view()
 
-    def increse_font_size(self, number: int):
-        self.font_size["sm"] += number
-        self.font_size["md"] += number
-        self.font_size["lg"] += number
-        alt.themes.register(self.name_theme, self.get_theme())
+        # Color Schemes config
+        self.range_config = RangeModel(category=self.colors['schemes']["categorical"],
+                                       diverging=self.colors['schemes']["diverging"],
+                                       heatmap=self.colors['schemes']["sequential"],
+                                       ramp=self.colors['schemes']["sequential"]).create_range()
 
-    def decrese_font_size(self, number: int):
-        self.font_size["sm"] -= number
-        self.font_size["md"] -= number
-        self.font_size["lg"] -= number
-
-        if self.font_size['sm'] < 0:
-            self.font_size["sm"] = 0
-        if self.font_size['md'] < 0:
-            self.font_size["md"] = 0
-        if self.font_size['lg'] < 0:
-            self.font_size["lg"] = 0
-        alt.themes.register(self.name_theme, self.get_theme())
-
-
-class ThemeDaltonismProtonopia():
-    """
-    This class incorporates colors for the type of color blindness - protonopia (Absence of RED photoreceptors).
-    The class is responsible for creating models according to what the Vega-Altair API expects.
-    """
-    name_theme = 'protonopia_theme'
-    colors: Colors = {'arc': '#FFFFFF', 'axis': COLORS['axis'], 'background': COLORS['background'],
-                      'text': COLORS['text'],
-                      'mark': COLOR_PRIMITIVES["lavender"]["40"],
-                      'grid': COLORS['grid'], }
-    font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
-    spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
-
-    # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
-                            gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
-                            titleFontSize=font_size['sm']).create_axis()
-
-    header_config = config = HeaderModel(labelColor=colors['text'], labelFontSize=font_size['sm'],
-                                         titleColor=colors['text'],
-                                         titleFontSize=font_size['md']).create_header()
-
-    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
-                                titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
-
-    range_config = RangeModel(category=COLORS['schemes']['categorical']['ibm'],
-                              diverging=COLORS["schemes"]["categorical"]["wong"],
-                              heatmap=COLORS["schemes"]["sequential"]['blues'],
-                              ramp=COLORS["schemes"]["sequential"]["blues"]).create_range()
-
-    title_config = TitleModel(color=colors["text"], fontSize=font_size["lg"], subtitleColor=colors['text'],
-                              subtitleFontSize=font_size['md']).create_title()
-    view_config = ViewModel(stroke='tan').create_view()
-
-    # Mark config
-    arc_config = MarkArkModel(stroke=colors['arc']).create_mark_ark()
-    bar_config = MarkBarModel(fill=colors['mark'], stroke=colors['arc']).create_mark_bar()
-    line_config = MarkLineModel(stroke=colors['mark']).create_mark_line()
-    path_config = MarkPathModel(stroke=colors['mark']).create_mark_path()
-    point_config = MarkPointModel(fill=colors["mark"], filled=True).create_mark_point()
-    rect_config = MarkRectModel(fill=colors["mark"]).create_mark_rect()
-    rule_config = MarkRuleModel(stroke=colors['mark']).create_mark_rule()
-    shape_config = MarkShapeModel(stroke=colors['mark']).create_mark_shape()
-    text_config = MarkTextModel(color=colors["text"], fontSize=font_size['sm']).create_mark_text()
-
-    def __init__(self):
+        # Marks config
+        self.arc_config = MarkArkModel(stroke=self.colors['arc']).create_mark_ark()
+        self.bar_config = MarkBarModel(fill=self.colors['mark'], stroke=self.colors['arc']).create_mark_bar()
+        self.line_config = MarkLineModel(stroke=self.colors['mark']).create_mark_line()
+        self.path_config = MarkPathModel(stroke=self.colors['mark']).create_mark_path()
+        self.point_config = MarkPointModel(fill=self.colors["mark"], filled=True).create_mark_point()
+        self.rect_config = MarkRectModel(fill=self.colors["mark"]).create_mark_rect()
+        self.rule_config = MarkRuleModel(stroke=self.colors['mark']).create_mark_rule()
+        self.shape_config = MarkShapeModel(stroke=self.colors['mark']).create_mark_shape()
+        self.text_config = MarkTextModel(color=self.colors["text"], fontSize=self.font_size['sm']).create_mark_text()
         self.config = ConfigModel(background=self.colors['background'],
                                   axis=self.axis_config, header=self.header_config,
                                   legend=self.legend_config, range=self.range_config,
@@ -159,306 +132,122 @@ class ThemeDaltonismProtonopia():
                                   rule=self.rule_config, shape=self.shape_config,
                                   text=self.text_config)
 
-    def get_theme(self):
         return self.config.create_full_config()
 
+    def getName(self):
+        return self.name_theme
+
     def change_background_color(self, new_color):
+        """
+        Change the background of the graphic with a color, then re register the theme in altair.themes
+        :param new_color: A color given in Hexadecimal ex. #FFFFFF
+        """
         self.colors['background'] = new_color
         alt.themes.register(self.name_theme, self.get_theme())
 
     def change_mark_color(self, new_color):
+        """
+        Change de color of the marks like bars,lines, points, etc when no z axis is given, then re register the theme
+        in altair.themes
+        :param new_color: A color given in Hexadecimal ex. #185ABD
+        """
         self.colors['mark'] = new_color
         alt.themes.register(self.name_theme, self.get_theme())
 
     def change_text_color(self, new_color):
+        """
+        Change the color of all text in the graph, then re register the theme in altair.themes
+        :param new_color: A color given in Hexadecimal ex. #000000
+        """
         self.colors['text'] = new_color
         alt.themes.register(self.name_theme, self.get_theme())
 
     def increse_font_size(self, number: int):
-        self.font_size["sm"] += number
-        self.font_size["md"] += number
-        self.font_size["lg"] += number
+        """
+        Increase the size of the font by a given number, since all text most by hierarchical the ratio is kept and all
+        fonts increases sizes, then re register the theme in altair.themes
+        :param number: A int value greater than 0
+        """
+        if number > 0:
+            self.font_size["sm"] += number
+            self.font_size["md"] += number
+            self.font_size["lg"] += number
+            alt.themes.register(self.name_theme, self.get_theme())
+
+    def decrease_font_size(self, number: int):
+        """
+        Decrease the size of the font by a given number, since all text most by hierarchical the ratio is kept and all
+        fonts decreases sizes, then re register the theme in altair.themes
+        :param number: A int value greater than 0
+        """
+        if number > 0:
+            self.font_size["sm"] -= number
+            self.font_size["md"] -= number
+            self.font_size["lg"] -= number
+
+            if self.font_size['sm'] < 0:
+                self.font_size["sm"] = 0
+            if self.font_size['md'] < 0:
+                self.font_size["md"] = 0
+            if self.font_size['lg'] < 0:
+                self.font_size["lg"] = 0
+            alt.themes.register(self.name_theme, self.get_theme())
+
+    def change_categorical_scheme(self, scheme: List[str]):
+        """
+        Change the categorical color scheme, then re register the theme in altair.themes
+        :param scheme: A list of color in Hexadecimal like ['#123abd', '#ECB178']
+        """
+        self.colors['schemes']['categorical'] = scheme
         alt.themes.register(self.name_theme, self.get_theme())
 
-    def decrese_font_size(self, number: int):
-        self.font_size["sm"] -= number
-        self.font_size["md"] -= number
-        self.font_size["lg"] -= number
+    def change_sequential_scheme(self, scheme: List[str]):
+        """
+        Change the sequential color scheme, then re register the theme in altair.themes
+        :param scheme: A list of color in Hexadecimal like ['#123abd', '#ECB178']
+        """
+        self.colors['schemes']['sequential'] = scheme
+        alt.themes.register(self.name_theme, self.get_theme())
 
-        if self.font_size['sm'] < 0:
-            self.font_size["sm"] = 0
-        if self.font_size['md'] < 0:
-            self.font_size["md"] = 0
-        if self.font_size['lg'] < 0:
-            self.font_size["lg"] = 0
+    def changeLineColor(self, color_line):
+        """
+        Change the color of all lines in the graph like the grid, ticks and domain, this no include the mark line
+        :param color_line: A color in hexadecimal ex. #000000
+        """
+        self.colors['axis'] = color_line
         alt.themes.register(self.name_theme, self.get_theme())
 
 
-class ThemeDaltonismTritanopia():
-    """
-    This class incorporates colors for the type of color blindness - tritanopia (Absence of BLUE photoreceptors).
-    The class is responsible for creating models according to what the Vega-Altair API expects.
-    """
-    name_theme = 'tritanopia_theme'
-    colors: Colors = {'arc': '#FFFFFF', 'axis': COLORS['axis'], 'background': COLORS['background'],
-                      'text': COLORS['text'],
-                      'mark': COLOR_PRIMITIVES["teal"]["40"], 'grid': COLORS['grid'], }
-    font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
-    spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
-
-    # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
-                            gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
-                            titleFontSize=font_size['sm']).create_axis()
-
-    header_config = config = HeaderModel(labelColor=colors['text'], labelFontSize=font_size['sm'],
-                                         titleColor=colors['text'],
-                                         titleFontSize=font_size['md']).create_header()
-
-    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
-                                titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
-
-    range_config = RangeModel(category=COLORS['schemes']['categorical']['ibm'],
-                              diverging=COLORS["schemes"]["categorical"]["tol"],
-                              heatmap=COLORS["schemes"]["sequential"]['reds'],
-                              ramp=COLORS["schemes"]["sequential"]["reds"]).create_range()
-
-    title_config = TitleModel(color=colors["text"], fontSize=font_size["lg"], subtitleColor=colors['text'],
-                              subtitleFontSize=font_size['md']).create_title()
-    view_config = ViewModel(stroke='tan').create_view()
-
-    # Mark config
-    arc_config = MarkArkModel(stroke=colors['arc']).create_mark_ark()
-    bar_config = MarkBarModel(fill=colors['mark'], stroke=colors['arc']).create_mark_bar()
-    line_config = MarkLineModel(stroke=colors['mark']).create_mark_line()
-    path_config = MarkPathModel(stroke=colors['mark']).create_mark_path()
-    point_config = MarkPointModel(fill=colors["mark"], filled=True).create_mark_point()
-    rect_config = MarkRectModel(fill=colors["mark"]).create_mark_rect()
-    rule_config = MarkRuleModel(stroke=colors['mark']).create_mark_rule()
-    shape_config = MarkShapeModel(stroke=colors['mark']).create_mark_shape()
-    text_config = MarkTextModel(color=colors["text"], fontSize=font_size['sm']).create_mark_text()
-
+class AccessibleTheme(ModelTheme):
     def __init__(self):
-        self.config = ConfigModel(background=self.colors['background'],
-                                  axis=self.axis_config, header=self.header_config,
-                                  legend=self.legend_config, range=self.range_config,
-                                  title=self.title_config, view=self.view_config,
-                                  arc=self.arc_config, bar=self.bar_config,
-                                  line=self.line_config, path=self.path_config,
-                                  point=self.point_config, rect=self.rect_config,
-                                  rule=self.rule_config, shape=self.shape_config,
-                                  text=self.text_config)
+        super().__init__('accessible_theme', COLOR_PRIMITIVES["black"], COLOR_PRIMITIVES["black"],
+                         COLOR_PRIMITIVES["blue"]['30'], COLOR_PRIMITIVES["white"], False)
 
-    def get_theme(self):
-        return self.config.create_full_config()
-
-    def change_background_color(self, new_color):
-        self.colors['background'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def change_mark_color(self, new_color):
-        self.colors['mark'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def change_text_color(self, new_color):
-        self.colors['text'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def increse_font_size(self, number: int):
-        self.font_size["sm"] += number
-        self.font_size["md"] += number
-        self.font_size["lg"] += number
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def decrese_font_size(self, number: int):
-        self.font_size["sm"] -= number
-        self.font_size["md"] -= number
-        self.font_size["lg"] -= number
-
-        if self.font_size['sm'] < 0:
-            self.font_size["sm"] = 0
-        if self.font_size['md'] < 0:
-            self.font_size["md"] = 0
-        if self.font_size['lg'] < 0:
-            self.font_size["lg"] = 0
-        alt.themes.register(self.name_theme, self.get_theme())
-
-
-class ThemeAccesible():
-    """
-    This class incorporates colors trying to be accesible to most of the colour blindness, and other sight conditions
-    The class is responsible for creating models according to what the Vega-Altair API expects.
-    """
-    name_theme = 'accesible_theme'
-    colors: Colors = {'arc': '#FFFFFF', 'axis': COLORS['axis'], 'background': COLORS['background'],
-                      'text': COLORS['text'],
-                      'mark': COLORS['mark'], 'grid': COLORS['grid'], }
-    font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
-    spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
-
-    # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
-                            gridOpacity=0.3, tickSize=spacing['md'], titleColor=colors['text'],
-                            titleFontSize=font_size['sm']).create_axis()
-
-    header_config = config = HeaderModel(labelColor=colors['text'], labelFontSize=font_size['sm'],
-                                         titleColor=colors['text'],
-                                         titleFontSize=font_size['md']).create_header()
-
-    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
-                                titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
-
-    range_config = RangeModel(category=COLORS['schemes']['categorical']['qualitative'],
-                              diverging=COLORS["schemes"]["categorical"]["tol"],
-                              heatmap=COLORS["schemes"]["sequential"]['blues'],
-                              ramp=COLORS["schemes"]["sequential"]["blues"]).create_range()
-
-    title_config = TitleModel(color=colors["text"], fontSize=font_size["lg"], subtitleColor=colors['text'],
-                              subtitleFontSize=font_size['md']).create_title()
-    view_config = ViewModel(stroke='tan').create_view()
-
-    # Mark config
-    arc_config = MarkArkModel(stroke=colors['arc']).create_mark_ark()
-    bar_config = MarkBarModel(fill=colors['mark'], stroke=colors['arc']).create_mark_bar()
-    line_config = MarkLineModel(stroke=colors['mark']).create_mark_line()
-    path_config = MarkPathModel(stroke=colors['mark']).create_mark_path()
-    point_config = MarkPointModel(fill=colors["mark"], filled=True).create_mark_point()
-    rect_config = MarkRectModel(fill=colors["mark"]).create_mark_rect()
-    rule_config = MarkRuleModel(stroke=colors['mark']).create_mark_rule()
-    shape_config = MarkShapeModel(stroke=colors['mark']).create_mark_shape()
-    text_config = MarkTextModel(color=colors["text"], fontSize=font_size['sm']).create_mark_text()
-
+class DarkAccessibleTheme(ModelTheme):
     def __init__(self):
-        self.config = ConfigModel(background=self.colors['background'],
-                                  axis=self.axis_config, header=self.header_config,
-                                  legend=self.legend_config, range=self.range_config,
-                                  title=self.title_config, view=self.view_config,
-                                  arc=self.arc_config, bar=self.bar_config,
-                                  line=self.line_config, path=self.path_config,
-                                  point=self.point_config, rect=self.rect_config,
-                                  rule=self.rule_config, shape=self.shape_config,
-                                  text=self.text_config)
+        super().__init__('dark_accessible_theme', COLOR_PRIMITIVES["white"], COLOR_PRIMITIVES["white"],
+                         COLOR_PRIMITIVES["blue"]['30'], COLOR_PRIMITIVES["black"], False)
+        self.change_categorical_scheme(COLORS["schemes"]['categorical']['paired'])
 
-    def get_theme(self):
-        return self.config.create_full_config()
+    def change_categorical_scheme(self, scheme: List[str]):
+        super().change_categorical_scheme(scheme)
 
-    def change_background_color(self, new_color):
-        self.colors['background'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def change_mark_color(self, new_color):
-        self.colors['mark'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def change_text_color(self, new_color):
-        self.colors['text'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def increse_font_size(self, number: int):
-        self.font_size["sm"] += number
-        self.font_size["md"] += number
-        self.font_size["lg"] += number
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def decrese_font_size(self, number: int):
-        self.font_size["sm"] -= number
-        self.font_size["md"] -= number
-        self.font_size["lg"] -= number
-
-        if self.font_size['sm'] < 0:
-            self.font_size["sm"] = 0
-        if self.font_size['md'] < 0:
-            self.font_size["md"] = 0
-        if self.font_size['lg'] < 0:
-            self.font_size["lg"] = 0
-        alt.themes.register(self.name_theme, self.get_theme())
-
-
-class DarkThemeAccesible():
-    """
-    This class incorporates colors trying to be accesible to most of the colour blindness, and other sight conditions in a dark mode
-    The class is responsible for creating models according to what the Vega-Altair API expects.
-    """
-    name_theme = 'accesible_theme'
-    colors: Colors = {'arc': '#FFFFFF', 'axis': "#FFFFFF", 'background': "#333333",
-                      'text': "#FFFFFF",
-                      'mark': COLOR_PRIMITIVES["blue"]["30"], 'grid': "#000000", }
-    font_size: FONT_SIZES = {'sm': FONT_SIZES['sm'], 'md': FONT_SIZES['md'], 'lg': FONT_SIZES['lg']}
-    spacing: SPACING = {'sm': SPACING['sm'], 'md': SPACING['md'], 'xl': SPACING['xl']}
-
-    # Variables a cambiar independientes
-    axis_config = AxisModel(gridColor=colors['axis'], labelColor=colors['text'], tickOpacity=1.0, gridDash=[1, 2],
-                            gridOpacity=0.4, tickSize=spacing['md'], titleColor=colors['text'],
-                            titleFontSize=font_size['sm']).create_axis()
-
-    header_config = config = HeaderModel(labelColor=colors['text'], labelFontSize=font_size['sm'],
-                                         titleColor=colors['text'],
-                                         titleFontSize=font_size['md']).create_header()
-
-    legend_config = LegendModel(labelColor=colors['text'], labelFontSize=font_size['sm'], titleColor=colors['text'],
-                                titleFontSize=font_size['sm'], titlePadding=spacing['md']).create_legend()
-
-    range_config = RangeModel(category=COLORS['schemes']['categorical']['qualitative'],
-                              diverging=COLORS["schemes"]["categorical"]["tol"],
-                              heatmap=COLORS["schemes"]["sequential"]['reds'],
-                              ramp=COLORS["schemes"]["sequential"]["reds"]).create_range()
-
-    title_config = TitleModel(color=colors["text"], fontSize=font_size["lg"], subtitleColor=colors['text'],
-                              subtitleFontSize=font_size['md']).create_title()
-    view_config = ViewModel(stroke='tan').create_view()
-
-    # Mark config
-    arc_config = MarkArkModel(stroke=colors['arc']).create_mark_ark()
-    bar_config = MarkBarModel(fill=colors['mark'], stroke=colors['arc']).create_mark_bar()
-    line_config = MarkLineModel(stroke=colors['mark']).create_mark_line()
-    path_config = MarkPathModel(stroke=colors['mark']).create_mark_path()
-    point_config = MarkPointModel(fill=colors["mark"], filled=True).create_mark_point()
-    rect_config = MarkRectModel(fill=colors["mark"]).create_mark_rect()
-    rule_config = MarkRuleModel(stroke=colors['mark']).create_mark_rule()
-    shape_config = MarkShapeModel(stroke=colors['mark']).create_mark_shape()
-    text_config = MarkTextModel(color=colors["text"], fontSize=font_size['sm']).create_mark_text()
-
+class FillerPatternTheme(ModelTheme):
     def __init__(self):
-        self.config = ConfigModel(background=self.colors['background'],
-                                  axis=self.axis_config, header=self.header_config,
-                                  legend=self.legend_config, range=self.range_config,
-                                  title=self.title_config, view=self.view_config,
-                                  arc=self.arc_config, bar=self.bar_config,
-                                  line=self.line_config, path=self.path_config,
-                                  point=self.point_config, rect=self.rect_config,
-                                  rule=self.rule_config, shape=self.shape_config,
-                                  text=self.text_config)
+        super().__init__('dark_accessible_theme_with_grids', COLOR_PRIMITIVES["white"], COLOR_PRIMITIVES["white"],
+                         COLOR_PRIMITIVES["blue"]['30'], COLOR_PRIMITIVES["black"], True)
+        self.change_categorical_scheme(["url(#gg    )", "url(#pattern_2)", "url(#pattern_3)"])
 
-    def get_theme(self):
-        return self.config.create_full_config()
+    def change_categorical_scheme(self, scheme: List[str]):
+        super().change_categorical_scheme(scheme)
 
-    def change_background_color(self, new_color):
-        self.colors['background'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
 
-    def change_mark_color(self, new_color):
-        self.colors['mark'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
+class PrintFriendlyTheme(ModelTheme):
+    def __init__(self):
+        super().__init__('print_theme', COLOR_PRIMITIVES["black"], COLOR_PRIMITIVES["black"],
+                         COLOR_PRIMITIVES["blue"]['30'], COLOR_PRIMITIVES["white"], False)
+        self.change_categorical_scheme(COLORS["schemes"]['categorical']['printGrey'])
 
-    def change_text_color(self, new_color):
-        self.colors['text'] = new_color
-        alt.themes.register(self.name_theme, self.get_theme())
+    def change_categorical_scheme(self, scheme: List[str]):
+        super().change_categorical_scheme(scheme)
 
-    def increse_font_size(self, number: int):
-        self.font_size["sm"] += number
-        self.font_size["md"] += number
-        self.font_size["lg"] += number
-        alt.themes.register(self.name_theme, self.get_theme())
-
-    def decrese_font_size(self, number: int):
-        self.font_size["sm"] -= number
-        self.font_size["md"] -= number
-        self.font_size["lg"] -= number
-
-        if self.font_size['sm'] < 0:
-            self.font_size["sm"] = 0
-        if self.font_size['md'] < 0:
-            self.font_size["md"] = 0
-        if self.font_size['lg'] < 0:
-            self.font_size["lg"] = 0
-        alt.themes.register(self.name_theme, self.get_theme())

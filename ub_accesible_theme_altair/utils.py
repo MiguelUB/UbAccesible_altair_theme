@@ -34,6 +34,29 @@ accesible_template = """
 </head>
 </head>
 <body>
+<svg height="0" width="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<defs>
+
+<!-- From SVG stripe generator 
+https://www.coffee-break-designs.com/labs/svg_stripe_generator/ -->
+
+<pattern id="pattern_1" patternUnits="userSpaceOnUse" width="3" height="3" patternTransform="rotate(45)">
+<line x1="0" y="0" x2="0" y2="3" stroke="#000000" stroke-width="4" />
+</pattern>
+
+<!-- From Pattern Fills by Irene Ros 
+http://iros.github.io/patternfills/sample_svg.html 
+http://iros.github.io/patternfills/ -->
+
+<pattern id="pattern_2" patternUnits="userSpaceOnUse" width="8" height="8"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9JyNmZmYnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyNhYWEnLz4KPC9zdmc+Cg==" x="0" y="0" width="8" height="8"> </image> </pattern> 
+
+<pattern id="pattern_3" patternUnits="userSpaceOnUse" width="10" height="10"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPScjNTU5NGU3Jy8+CiAgPHBhdGggZD0nTS0xLDEgbDIsLTIKICAgICAgICAgICBNMCwxMCBsMTAsLTEwCiAgICAgICAgICAgTTksMTEgbDIsLTInIHN0cm9rZT0nd2hpdGUnIHN0cm9rZS13aWR0aD0nMScvPgo8L3N2Zz4=" x="0" y="0" width="10" height="10"> </image> </pattern>
+
+<pattern id="houndstooth" patternUnits="userSpaceOnUse" width="10" height="10"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAnIGhlaWdodD0nMTAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+CiAgPHBhdGggZD0nTTAgMEw0IDQnIHN0cm9rZT0nI2FhYScgZmlsbD0nI2FhYScgc3Ryb2tlLXdpZHRoPScxJy8+CiAgPHBhdGggZD0nTTIuNSAwTDUgMi41TDUgNUw5IDlMNSA1TDEwIDVMMTAgMCcgc3Ryb2tlPScjYWFhJyBmaWxsPScjYWFhJyBzdHJva2Utd2lkdGg9JzEnLz4KICA8cGF0aCBkPSdNNSAxMEw1IDcuNUw3LjUgMTAnIHN0cm9rZT0nI2FhYScgZmlsbD0nI2FhYScgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPgo=" x="0" y="0" width="10" height="10"> </image> </pattern>
+
+</defs>
+</svg>
+<svg id='sadsa' width='0%' height='0%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='gg' patternUnits='userSpaceOnUse' width='30' height='40' patternTransform='scale(3) rotate(95)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(17,50%,57.6%,1)'/><path d='M1.624 19.09l6.597-1.595a.503.503 0 11.238.98L2.145 20l6.314 1.526a.504.504 0 01-.238.98l-6.597-1.595 3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM-.911 18.377l-1.595-6.597a.504.504 0 11.98-.237L0 17.856l1.526-6.313a.503.503 0 11.98.237L.911 18.377l3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 000 7.125a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM-11.535 16.763a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0l3.426-3.426-6.597 1.595a.501.501 0 01-.609-.371.504.504 0 01.372-.609l6.313-1.526-6.313-1.526a.504.504 0 11.237-.98l6.597 1.595-3.426-3.426a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM.911 21.625l1.595 6.597a.504.504 0 11-.98.237L0 22.146l-1.526 6.313a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.099a4.584 4.584 0 006.475 0l1.099-1.099a3.813 3.813 0 000-5.386zM31.624 19.09l6.597-1.595a.503.503 0 11.238.98L32.145 20l6.314 1.526a.504.504 0 01-.238.98l-6.597-1.595 3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM29.089 18.377l-1.595-6.597a.504.504 0 11.98-.237L30 17.856l1.526-6.313a.503.503 0 11.98.237l-1.595 6.597 3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 0030 7.125a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM18.465 16.763a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0l3.426-3.426-6.597 1.595a.501.501 0 01-.609-.371.504.504 0 01.372-.609l6.313-1.526-6.313-1.526a.504.504 0 11.237-.98l6.597 1.595-3.426-3.426a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM30.911 21.625l1.595 6.597a.504.504 0 11-.98.237L30 22.146l-1.526 6.313a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.099a4.584 4.584 0 006.475 0l1.099-1.099a3.813 3.813 0 000-5.386zM16.624 39.09l6.597-1.595a.503.503 0 11.238.98L17.145 40l6.314 1.526a.504.504 0 01-.238.98l-6.597-1.595 3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM14.089 38.377l-1.595-6.597a.504.504 0 11.98-.237L15 37.856l1.526-6.313a.503.503 0 11.98.237l-1.595 6.597 3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 0015 27.125a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM3.465 36.763a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0l3.426-3.426-6.597 1.595a.501.501 0 01-.609-.371.504.504 0 01.372-.609l6.313-1.526-6.313-1.526a.504.504 0 11.237-.98l6.597 1.595-3.426-3.426a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM15.911 41.625l1.595 6.597a.504.504 0 11-.98.237L15 42.146l-1.526 6.313a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.1a4.584 4.584 0 006.475 0l1.099-1.1a3.813 3.813 0 000-5.386zM16.624-.91l6.597-1.595a.503.503 0 11.238.98L17.145 0l6.314 1.526a.504.504 0 01-.238.98L16.624.912l3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM14.089-1.623L12.494-8.22a.504.504 0 11.98-.237L15-2.144l1.526-6.313a.503.503 0 11.98.237l-1.595 6.597 3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 0015-12.875a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM3.465-3.237a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0L13.376.912 6.779 2.507a.501.501 0 01-.609-.371.504.504 0 01.372-.609L12.855.001 6.542-1.525a.504.504 0 11.237-.98L13.376-.91 9.95-4.336a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM15.911 1.625l1.595 6.597a.504.504 0 11-.98.237L15 2.146 13.474 8.46a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.099a4.584 4.584 0 006.475 0l1.099-1.099a3.813 3.813 0 000-5.386z'  stroke-width='1' stroke='none' fill='hsla(12,30.6%,90.4%,1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(#a)'/></svg>
 <div class="container mt-5">
     <!-- Selectors for Graph-->
 
@@ -87,14 +110,6 @@ accesible_template = """
         let description = "{{ description }}"
         let embedOpt = {"mode": "vega-lite"};
         let defaultScheme = null
-        if (spec.encoding.hasOwnProperty('color')) {
-            if (spec.encoding.color.hasOwnProperty('scale')) {
-                defaultScheme = spec.encoding.color.scale
-            } else {
-                spec.encoding.color["scale"] = {"scheme": "blues"}
-                defaultScheme = spec.encoding.color["scale"] = {"scheme": "blues"}
-            }
-        }
         if(!spec.hasOwnProperty("description")){
             spec.description=description
         }
@@ -116,14 +131,14 @@ accesible_template = """
             let newHeight = $heightGraphInput.val();
             spec["height"] = newHeight
 
-            vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+            vegaEmbed("#chart", spec, { "renderer": "svg" });
         }
 
         function changeWidth() {
             let newWidth = $widthGraphInput.val();
             spec["width"] = newWidth
 
-            vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+            vegaEmbed("#chart", spec, { "renderer": "svg" });
         }
 
         function biggerFontSize() {
@@ -150,7 +165,7 @@ accesible_template = """
             }
 
 
-            vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+            vegaEmbed("#chart", spec, { "renderer": "svg" });
 
         }
 
@@ -177,7 +192,7 @@ accesible_template = """
                 'titleFontSize': fontSizes.md
             }
             
-            vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+            vegaEmbed("#chart", spec, { "renderer": "svg" });
 
         }
     </script>
@@ -192,16 +207,16 @@ accesible_template = """
                     switch (opcionSeleccionada) {
                         case 'option1':
                             spec.encoding.color.scale = defaultScheme
-                            vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+                            vegaEmbed("#chart", spec, { "renderer": "svg" });
                             break;
                         case 'option2':
 
                             spec.encoding.color.scale = {"scheme": "category20b"}
-                            vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+                            vegaEmbed("#chart", spec, { "renderer": "svg" });
                             break;
                         case 'option3':
                             spec.encoding.color.scale = {"scheme": "viridis"}
-                            vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+                           vegaEmbed("#chart", spec, { "renderer": "svg" });
                             break;
                         default:
                             console.log("The selected option does not correspond any color scheme")
@@ -213,7 +228,7 @@ accesible_template = """
             }
         });
         
-        vegaEmbed("#chart", spec, embedOpt).catch(error => showError(el, error));
+        vegaEmbed("#chart", spec, { "renderer": "svg" });
         $heightGraphInput.on("input", changeHeight);
         $widthGraphInput.on("input", changeWidth);
         $buttonIncrease.on("click", biggerFontSize);
@@ -246,5 +261,3 @@ def create_accesible_scheme(chart: Chart, filename='test', description='Esta es 
     with open(html_path, "w") as file:
         file.write(template_html)
     print("Thew HTLM file has been created in", html_path)
-
-
