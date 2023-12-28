@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.25'  # Muy importante, deberéis ir cambiando la versión de vuestra librería según incluyáis nuevas funcionalidades
+VERSION = '0.0.26'  # Muy importante, deberéis ir cambiando la versión de vuestra librería según incluyáis nuevas funcionalidades
 PACKAGE_NAME = 'ub_accesible_theme_altair'  # Debe coincidir con el nombre de la carpeta
 AUTHOR = 'Miguel Huayllas'  # Modificar con vuestros datos
 AUTHOR_EMAIL = 'mhuaylch10@alumnes.ub.edu'  # Modificar con vuestros datos
@@ -25,7 +25,7 @@ ENTRY_POINTS: Dict[str, List[str]] = {
         "protonopia_theme = ub_accesible_theme_altair.themes:protonopia_theme",
         "tritanopia_theme = ub_accesible_theme_altair.themes:tritanopia_theme",
         "deuteranopia_theme = ub_accesible_theme_altair.themes:deuteranopia_theme",
-        "accesible_theme = ub_accesible_theme_altair.themes:accessible_theme",
+        "accessible_theme = ub_accesible_theme_altair.themes:accessible_theme",
         "dark_accessible_theme = ub_accesible_theme_altair.themes:dark_accessible_theme",
     ],
 }

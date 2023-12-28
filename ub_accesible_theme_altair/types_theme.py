@@ -151,33 +151,38 @@ class Theme(TypedDict):
 class Categorical(TypedDict):
     """Categorical color scheme configurations."""
 
-    default: List[str]
+    paired: List[str]
+    dark2: List[str]
+    set2: List[str]
     ibm: List[str]
     wong: List[str]
     tol: List[str]
-    qualitative: List[str]
+    printGrey: List[str]
 
 
 class Diverging(TypedDict):
     """Diverging color scheme configurations."""
 
     bluered: List[str]
-    tealred: List[str]
-    greenlavender: List[str]
+    orangepurple: List[str]
+    pinkgreen: List[str]
+    brownteal: List[str]
 
 
 class Sequential(TypedDict):
-    """Sequential color scheme configurations."""
+    """Sequential color scheme configurations. For single and mult hue colors"""
 
     blues: List[str]
     greens: List[str]
     reds: List[str]
-    yellows: List[str]
-    teals: List[str]
-    lavenders: List[str]
-    grays: List[str]
     oranges: List[str]
-    pinks: List[str]
+    purples: List[str]
+    multihueblue: List[str]
+    multihuered: List[str]
+    multihuegreen: List[str]
+    multihueorange: List[str]
+    multihuepurple: List[str]
+    grays: List[str]
 
 
 class ColorScheme(TypedDict):
@@ -194,7 +199,6 @@ class Colors(TypedDict):
     arc: str
     axis: str
     background: str
-    grid: str
     mark: str
     text: str
     schemes: ColorScheme
